@@ -237,7 +237,7 @@ input("Aperte Enter para continuar...")
 male, female = count_gender(data_list)
 print("\nTAREFA 8: Por que a condição a seguir é Falsa?")
 print("male + female == len(data_list):", male + female == len(data_list))
-answer = "Porque a função len() retorna o número de itens em um objeto. E o número total de objetos na coluna de gênero não é apenas male + female, já que existem espaços em braco.
+answer = "Porque a função len() retorna o número de itens em um objeto. E o número total de objetos na coluna de gênero não é apenas male + female, já que existem espaços em braco."
 print("resposta:", answer)
 
 print("\nA oitava tarefa termina aqui!")
