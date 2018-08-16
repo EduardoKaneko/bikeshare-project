@@ -119,7 +119,14 @@ input("Aperte Enter para continuar...")
 # Isso deveria retornar uma lista com [count_male, count_female] (exemplo: [10, 15] significa 10 Masculinos, 15 Femininos)
 column_gender = column_to_list(data_list, -2)
 
-def count_gender(data_list):
+def count_gender(data_list):    
+    """
+        Contando o número de pessoas de cada gênero.
+        INPUT:
+        data_list: List. O dataset completo.
+        OUTPUT:
+        count_gender: [male, female].. O número de homens e mulheres, em forma de lista.
+    """
     male = 0
     female = 0
     for gender in column_gender:
@@ -128,15 +135,6 @@ def count_gender(data_list):
         if gender == "Male":
             male += 1
     return [male, female]
-
-"""
-    Contando o número de pessoas de cada gênero.
-    INPUT:
-    data_list: List. O dataset completo.
-    OUTPUT:
-    count_gender: [male, female].. O número de homens e mulheres, em forma de lista.
-"""
-
 
 print("\nTAREFA 5: Imprimindo o resultado de count_gender")
 print(count_gender(data_list))
@@ -154,6 +152,13 @@ input("Aperte Enter para continuar...")
 # TODO: Crie uma função que pegue o gênero mais popular, e retorne este gênero como uma string.
 # Esperamos ver "Masculino", "Feminino", ou "Igual" como resposta.
 def most_popular_gender(data_list):
+    """
+        Calcular o gênero mais poupular.
+        INPUT:
+        data_list: List. O dataset completo.
+        OUTPUT:
+        most_popular_gender: answer. Str. A resposta do gênero mais popular, em forma de string.
+    """
     answer = ""
     if male > female:
         answer = "Masculino"
@@ -162,15 +167,6 @@ def most_popular_gender(data_list):
     else:
         answer = "Igual"
     return answer
-
-"""
-    Calcular o gênero mais poupular.
-    INPUT:
-    data_list: List. O dataset completo.
-    OUTPUT:
-    most_popular_gender: answer. Str. A resposta do gênero mais popular, em forma de string.
-"""
-
 
 print("\nTAREFA 6: Qual é o gênero mais popular na lista?")
 print("O gênero mais popular na lista é: ", most_popular_gender(data_list))
@@ -201,6 +197,13 @@ print("\nTAREFA 7: Verifique o gráfico!")
 user_type = column_to_list(data_list, 5) # A coluna do tipo do usuário
 
 def count_user_type(data_list):
+    """
+    Contar o número de usuários que são subscribers e contar o número de customers.
+    INPUT:
+    data_list: List. O dataset em forma de lista.
+    OUTPUT:
+    count_user_type: [subscriber, customer]. O número de usuários subscribers e customers em lista.
+    """
     subcriber = 0
     customer = 0
     for user in user_type:
@@ -209,14 +212,6 @@ def count_user_type(data_list):
         if user == "Customer":
             customer += 1
     return [subcriber, customer]
-"""
-    Contar o número de usuários que são subscribers e contar o número de customers.
-    INPUT:
-    data_list: List. O dataset em forma de lista.
-    OUTPUT:
-    count_user_type: [subscriber, customer]. O número de usuários subscribers e customers em lista.
-"""
-
 
 user_type = column_to_list(data_list, 5) #Temos a coluna de usuários
 types = ["Subscriber", "Customer"]
@@ -261,8 +256,43 @@ median_trip = 0.
 print("\nTAREFA 9: Imprimindo o mínimo, máximo, média, e mediana")
 trip_duration_list = [float(i) for i in trip_duration_list]
 trip_duration_list.sort()
-min_trip = int(min(trip_duration_list))
-max_trip = int(max(trip_duration_list))
+
+max_trip = trip_duration_list[0]
+for n in trip_duration_list:
+    if max_trip < n:
+        max_trip = n
+print("\nValor máximo: {}".format(int(max_trip)))
+
+min_trip = trip_duration_list[0]
+for n in trip_duration_list:
+    if min_trip > n:
+        min_trip = n
+print("\nValor mínimo: {}".format(int(min_trip)))
+
+mean_trip = 0
+for n in trip_duration_list:
+    mean_trip = mean_trip + n
+mean_trip = round(mean_trip/len(trip_duration_list))
+print("\nMédia: {}".format(mean_trip))
+
+median_trip = 0
+duration_ordenada = sorted(trip_duration_list)
+qtde_n_duration = len(trip_duration_list)
+center_duration = len(trip_duration_list)/2
+
+for n in trip_duration_list:
+    if len(duration_ordenada) % 2 != 0: #ÍMPAR
+        median_trip = trip_duration_list[len(trip_duration_list) // 2]
+    if len(duration_ordenada) % 2 == 0:
+        temp = 0.0
+        median_parties = []
+        median_parties = duration_ordenada[center_duration - 1 : center_duration + 1]
+        for n in median_parties:
+            temp += value
+            median_trip = temp / 2
+print("Mediana: {}".format(int(median_trip)))
+
+
 mean_trip = round(sum(trip_duration_list)/len(trip_duration_list))
 median_trip = round(trip_duration_list[len(trip_duration_list)//2])
 
